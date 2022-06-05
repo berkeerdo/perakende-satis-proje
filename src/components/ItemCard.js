@@ -5,10 +5,10 @@ function ItemCard(props) {
   const { addItem } = useCart();
 
   return (
-    <div className="col-11 col-md-6 col-lg-3 mx-0 mb-4">
+    <div className="col-11 col-md-6 col-lg-5 mx-0 mb-4">
       <div
         class="card text-center p-0 overflow-hidden h-100 shadow"
-        style={{ width: "200px" }}
+        style={{ width: "200px"}}
       >
         <img src={props.img} class="card-img-top img-fluid" alt="card-img" />
         <div className="card-body">

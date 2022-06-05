@@ -4,10 +4,10 @@ import data from "./utils/data";
 
 function Home() {
   return (
-    <>
-      <h1 className="text-center mt-3">Ürünler</h1>
+    <div style={{maxWidth:"500px" , float:"left"}}>
+      <h1 className="mt-3 mx-5">Ürünler</h1>
       <section className="py-4 container">
-        <div className="row justify-content-center">
+        <div className="row">
           {data.productData.map((item, index) => {
             return (
               <ItemCard
@@ -21,7 +21,7 @@ function Home() {
           })}
         </div>
       </section>
-    </>
+    </div>
   );
 }
 
