@@ -1,48 +1,47 @@
-import img1 from "../assets/meyve.jpeg";
+import dior from "../assets/dior-erkek-parfum.png";
+import iphone from "../assets/Iphone-sarj-aleti.jpg";
+import kusbasi from "../assets/kg-kusbasi-et.jpg";
+import tavuk from "../assets/tavuk-paket.jpg";
+import typc from "../assets/type-c-to-c-cable.png";
+import ulkerciko from "../assets/ulker-cikolata-paketi.jpg";
 
 const data = {
   productData: [
     {
       id: 1,
-      title: "Product",
-      price: "99",
-      img: img1,
+      title: "Dior Sauvage Erkek",
+      price: "2395",
+      img: dior,
     },
     {
       id: 2,
-      title: "Product 1",
-      price: "99",
-      img: img1,
+      title: "Iphone Şarj Aleti",
+      price: "179",
+      img: iphone,
     },
     {
       id: 3,
-      title: "Product 2",
-      price: "99",
-      img: img1,
+      title: "Kuşbaşı Et Kg",
+      price: "125",
+      img: kusbasi,
     },
     {
       id: 4,
-      title: "Product 3",
-      price: "99",
-      img: img1,
+      title: "Tavuk Paket/Kg",
+      price: "74",
+      img: tavuk,
     },
     {
       id: 5,
-      title: "Product 4",
-      price: "99",
-      img: img1,
+      title: "Type C to C Kablo",
+      price: "229",
+      img: typc,
     },
     {
       id: 6,
-      title: "Product 5",
-      price: "99",
-      img: img1,
-    },
-    {
-      id: 7,
-      title: "Product 6",
-      price: "99",
-      img: img1,
+      title: "Ülker All Star",
+      price: "145",
+      img: ulkerciko,
     },
   ],
 };

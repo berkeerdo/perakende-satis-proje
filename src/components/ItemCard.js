@@ -1,24 +1,42 @@
-import React from "react";
+import React, { useState } from "react";
 import { useCart } from "react-use-cart";
 
 function ItemCard(props) {
   const { addItem } = useCart();
 
+  const [buttonText, setButtonText] = useState("Sepete Ekle");
+
+  const changeText = () => {
+    setButtonText("Eklendi");
+    setTimeout(() => {
+      setButtonText("Sepete Ekle");
+    }, 1000);
+  };
+
   return (
-    <div className="col-11 col-md-6 col-lg-5 mx-0 mb-4">
+    <div className="col-sm-3 col-md-5 col-lg-3 mx-3 mb-4">
       <div
         class="card text-center p-0 overflow-hidden h-100 shadow"
-        style={{ width: "200px"}}
+        style={{ width: "220px", maxHeight: "340px" }}
       >
-        <img src={props.img} class="card-img-top img-fluid" alt="card-img" />
+        <img
+          src={props.img}
+          class="card-img-top img-fluid"
+          alt="card-img"
+          style={{ height:"200px" , maxHeight:"200" }}
+        />
         <div className="card-body">
           <h5 className="card-title fw-bold">{props.title}</h5>
-          <h6 className="card-title">{props.price} ₺</h6>
+          <h6 className="card-title mb-2">{props.price} ₺</h6>
           <button
-            onClick={() => addItem(props.item)}
-            className="btn btn-primary btn-sm"
+            onClick={() => {
+              addItem(props.item);
+              changeText();
+            }}
+            className="btn btn-sm text-white"
+            style={{ backgroundColor: "#477DCA" }}
           >
-            Sepete Ekle
+            {buttonText}
           </button>
         </div>
       </div>

@@ -2,11 +2,11 @@ import React from "react";
 import ItemCard from "./components/ItemCard";
 import data from "./utils/data";
 
-function Home() {
+function Products() {
   return (
-    <div style={{maxWidth:"500px" , float:"left"}}>
+    <div style={{maxWidth:"800px" , float:"left"}}>
       <h1 className="mt-3 mx-5">Ürünler</h1>
-      <section className="py-4 container">
+      <section className="py-3 container-fluid">
         <div className="row">
           {data.productData.map((item, index) => {
             return (
@@ -25,4 +25,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default Products;
