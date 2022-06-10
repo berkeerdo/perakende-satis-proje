@@ -16,14 +16,14 @@ function ItemCard(props) {
   return (
     <div className="col-sm-3 col-md-5 col-lg-3 mx-3 mb-4">
       <div
-        class="card text-center p-0 overflow-hidden h-100 shadow"
+        className="card text-center p-0 overflow-hidden h-100 shadow"
         style={{ width: "220px", maxHeight: "340px" }}
       >
         <img
           src={props.img}
-          class="card-img-top img-fluid"
+          className="card-img-top img-fluid"
           alt="card-img"
-          style={{ height:"200px" , maxHeight:"200" }}
+          style={{ height: "200px", maxHeight: "200" }}
         />
         <div className="card-body">
           <h5 className="card-title fw-bold">{props.title}</h5>

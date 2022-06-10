@@ -139,7 +139,10 @@ function Cart() {
               </button>
               {/* Öde Buttonu */}
               <Button className="mx-2" variant="primary" onClick={handleShow}>
-                Sipariş Onayla
+                Kredi Kartı
+              </Button>
+              <Button className="mx-2" variant="primary" onClick={handleShow}>
+                Nakit
               </Button>
             </div>
           </div>

@@ -1,4 +1,4 @@
-import React  from "react";
+import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faPhone,
@@ -27,16 +27,7 @@ function Invoice() {
         <div className="receipt-main col-xs-10 col-sm-10 col-md-6 col-xs-offset-1 col-sm-offset-1 col-md-offset-3">
           <div className="row">
             <div className="receipt-header">
-              <div className="col-xs-6 col-sm-6 col-md-6">
-                <div className="receipt-left">
-                  <img
-                    className="img-responsive"
-                    alt="iamgurdeeposahan"
-                    src="https://bootdey.com/img/Content/avatar/avatar6.png"
-                    style={{ width: "71px", borderRadius: "43px" }}
-                  />
-                </div>
-              </div>
+              <div className="col-xs-6 col-sm-6 col-md-6"></div>
               <div className="col-xs-6 col-sm-6 col-md-6 text-right">
                 <div className="receipt-right">
                   <h5>Trakya Üniversitesi</h5>
