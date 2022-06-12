@@ -8,6 +8,14 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 
 function Products() {
+  // Data
+
+  const [items, setItems] = useState([...data.productData]);
+
+  const changeData = (e) => {
+    data.productData.push(e);
+  };
+
   // Form Modal
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
@@ -21,8 +29,15 @@ function Products() {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => {
-    console.log(JSON.stringify(data));
+  const onSubmit = (da) => {
+    setItems([
+      ...items,
+      {
+        id: items.length,
+        title: da.title,
+        price: da.price,
+      },
+    ]);
   };
 
   if (show) {
@@ -39,12 +54,10 @@ function Products() {
                 type="text"
                 className="form-control"
                 placeholder="Ürün Adı"
-                {...register("ÜrünAdı", { required: true, maxLength: 20 })}
+                {...register("title", { required: true, maxLength: 20 })}
               />
               <div className="mt-2">
-                {errors.ÜrünAdı?.type === "required" && (
-                  <p>Ürün Adı giriniz.</p>
-                )}
+                {errors.price?.type === "required" && <p>Ürün Adı giriniz.</p>}
               </div>
             </div>
             <div className="form-group">
@@ -52,7 +65,7 @@ function Products() {
               <input
                 type="number"
                 className="form-control"
-                {...register("Ücret", { required: true, min: 0 })}
+                {...register("price", { required: true, min: 0 })}
               />
             </div>
             <div className="mt-3 d-flex">
@@ -84,7 +97,7 @@ function Products() {
 
       <section className="py-3 container-fluid">
         <div className="row">
-          {data.productData.map((item, index) => {
+          {items.map((item, index) => {
             return (
               <ItemCard
                 title={item.title}
