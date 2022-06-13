@@ -22,7 +22,7 @@ function Cart() {
 
   if (isEmpty) {
     return (
-      <div className="mt-5">
+      <div className="mt-5 mx-4">
         <div className="card">
           <div className="card-body cart">
             <div className="text-center">

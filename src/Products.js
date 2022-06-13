@@ -32,6 +32,8 @@ function Products() {
     formState: { errors },
   } = useForm();
 
+  // handleFunctions
+
   const onSubmit = (da) => {
     const newProduct = {
       id: generate(),
@@ -65,6 +67,25 @@ function Products() {
     newProductData[fieldName] = fieldValue;
 
     setEditProductData(newProductData);
+  };
+
+  const handleEditFormSubmit = (event) => {
+    event.preventDefault();
+
+    const editedProduct = {
+      id: editProductId,
+      title: "",
+      price: "",
+    };
+
+    const newProducts = [...items];
+
+    const index = items.findIndex((item) => item.id === editProductId);
+
+    newProducts[index] = editedProduct;
+
+    setItems(newProducts);
+    setEditProductId(null);
   };
 
   if (show) {
@@ -132,6 +153,7 @@ function Products() {
               <Fragment>
                 {editProductId === item.id ? (
                   <EditCard
+                    handleEditFormSubmit={handleEditFormSubmit}
                     editProductData={editProductData}
                     handleEditProductChange={handleEditProductChange}
                     title={item.title}
