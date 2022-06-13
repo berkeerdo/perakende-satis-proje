@@ -16,6 +16,7 @@
     "react-hook-form": "^7.32.0",
     "react-scripts": "5.0.1",
     "react-use-cart": "^1.13.0",
+    "shortid": "^2.2.16",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

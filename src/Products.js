@@ -6,11 +6,16 @@ import ItemCard from "./components/ItemCard";
 import { productData } from "./utils/data";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { generate } from "shortid";
 
 function Products() {
   // Data
 
   const [items, setItems] = useState([...productData]);
+  const [addFormData, setAddFormData] = useState({
+    title: "",
+    price: "",
+  });
 
   // Form Modal
   const [show, setShow] = useState(false);
@@ -26,20 +31,26 @@ function Products() {
   } = useForm();
 
   const onSubmit = (da) => {
-    setItems([
-      ...items,
-      {
-        id: items.length,
-        title: da.title,
-        price: da.price,
-      },
-    ]);
-
-    productData.push({
-      id: productData.length,
+    const newProduct = {
+      id: generate(),
       title: da.title,
       price: da.price,
-    });
+    };
+
+    const newProducts = [...items, newProduct];
+    setItems(newProducts);
+  };
+
+  const handleAddFormChange = (event) => {
+    event.preventDefault();
+
+    const fieldName = event.target.getAttribute("name");
+    const fieldValue = event.target.value;
+
+    const newFormData = { ...addFormData };
+    newFormData[fieldName] = fieldValue;
+
+    setAddFormData(newFormData);
   };
 
   if (show) {
@@ -54,9 +65,14 @@ function Products() {
               <label>Ürün Adı:</label>
               <input
                 type="text"
+                name="title"
                 className="form-control"
                 placeholder="Ürün Adı"
-                {...register("title", { required: true, maxLength: 20 })}
+                {...register("title", {
+                  required: true,
+                  maxLength: 20,
+                  onChange: (e) => handleAddFormChange(e),
+                })}
               />
               <div className="mt-2">
                 {errors.price?.type === "required" && <p>Ürün Adı giriniz.</p>}
@@ -66,6 +82,7 @@ function Products() {
               <label>Ücret:</label>
               <input
                 type="number"
+                name="price"
                 className="form-control"
                 {...register("price", { required: true, min: 0 })}
               />
