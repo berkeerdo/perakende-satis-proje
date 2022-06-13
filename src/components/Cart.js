@@ -23,7 +23,7 @@ function Cart() {
   if (isEmpty) {
     return (
       <div className="p-3 mt-2" style={{ float: "right" }}>
-        <Alert variant="danger" style={{ width: "90vh" }}>
+        <Alert variant="danger" style={{ width: "80vh" }}>
           Sepet Boş
         </Alert>
       </div>

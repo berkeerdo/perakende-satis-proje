@@ -3,18 +3,14 @@ import { Button, Modal } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlusCircle } from "@fortawesome/free-solid-svg-icons";
 import ItemCard from "./components/ItemCard";
-import data from "./utils/data";
+import { productData } from "./utils/data";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 
 function Products() {
   // Data
 
-  const [items, setItems] = useState([...data.productData]);
-
-  const changeData = (e) => {
-    data.productData.push(e);
-  };
+  const [items, setItems] = useState([...productData]);
 
   // Form Modal
   const [show, setShow] = useState(false);
@@ -38,6 +34,12 @@ function Products() {
         price: da.price,
       },
     ]);
+
+    productData.push({
+      id: productData.length,
+      title: da.title,
+      price: da.price,
+    });
   };
 
   if (show) {
@@ -68,6 +70,14 @@ function Products() {
                 {...register("price", { required: true, min: 0 })}
               />
             </div>
+            {/* <div className="form-group">
+              <label>Ücret:</label>
+              <input
+                type="number"
+                className="form-control"
+                {...register("price", { required: true, min: 0 })}
+              />
+            </div> */}
             <div className="mt-3 d-flex">
               <button className="btn btn-secondary">Kapat</button>
               <button type="submit" className="btn btn-primary mx-3">
