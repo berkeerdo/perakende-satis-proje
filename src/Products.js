@@ -1,8 +1,9 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { Button, Modal } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlusCircle } from "@fortawesome/free-solid-svg-icons";
 import ItemCard from "./components/ItemCard";
+import EditCard from "./components/EditCard";
 import { productData } from "./utils/data";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
@@ -12,7 +13,8 @@ function Products() {
   // Data
 
   const [items, setItems] = useState([...productData]);
-  const [addFormData, setAddFormData] = useState({
+  const [editProductId, setEditProductId] = useState(null);
+  const [editProductData, setEditProductData] = useState({
     title: "",
     price: "",
   });
@@ -41,16 +43,28 @@ function Products() {
     setItems(newProducts);
   };
 
-  const handleAddFormChange = (event) => {
+  const handleEditClick = (event, item) => {
+    event.preventDefault();
+    setEditProductId(item.id);
+
+    const productValues = {
+      title: item.title,
+      price: item.price,
+    };
+
+    setEditProductData(productValues);
+  };
+
+  const handleEditProductChange = (event) => {
     event.preventDefault();
 
     const fieldName = event.target.getAttribute("name");
     const fieldValue = event.target.value;
 
-    const newFormData = { ...addFormData };
-    newFormData[fieldName] = fieldValue;
+    const newProductData = { ...editProductData };
+    newProductData[fieldName] = fieldValue;
 
-    setAddFormData(newFormData);
+    setEditProductData(newProductData);
   };
 
   if (show) {
@@ -65,13 +79,11 @@ function Products() {
               <label>Ürün Adı:</label>
               <input
                 type="text"
-                name="title"
                 className="form-control"
                 placeholder="Ürün Adı"
                 {...register("title", {
                   required: true,
                   maxLength: 20,
-                  onChange: (e) => handleAddFormChange(e),
                 })}
               />
               <div className="mt-2">
@@ -82,19 +94,10 @@ function Products() {
               <label>Ücret:</label>
               <input
                 type="number"
-                name="price"
                 className="form-control"
                 {...register("price", { required: true, min: 0 })}
               />
             </div>
-            {/* <div className="form-group">
-              <label>Ücret:</label>
-              <input
-                type="number"
-                className="form-control"
-                {...register("price", { required: true, min: 0 })}
-              />
-            </div> */}
             <div className="mt-3 d-flex">
               <button className="btn btn-secondary">Kapat</button>
               <button type="submit" className="btn btn-primary mx-3">
@@ -124,15 +127,30 @@ function Products() {
 
       <section className="py-3 container-fluid">
         <div className="row">
-          {items.map((item, index) => {
+          {items.map((item) => {
             return (
-              <ItemCard
-                title={item.title}
-                price={item.price}
-                img={item.img}
-                key={index}
-                item={item}
-              />
+              <Fragment>
+                {editProductId === item.id ? (
+                  <EditCard
+                    editProductData={editProductData}
+                    handleEditProductChange={handleEditProductChange}
+                    title={item.title}
+                    price={item.price}
+                    img={item.img}
+                    key={item.id}
+                    item={item}
+                  />
+                ) : (
+                  <ItemCard
+                    title={item.title}
+                    price={item.price}
+                    img={item.img}
+                    key={item.id}
+                    item={item}
+                    handleEditClick={handleEditClick}
+                  />
+                )}
+              </Fragment>
             );
           })}
         </div>

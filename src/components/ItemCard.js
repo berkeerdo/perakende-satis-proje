@@ -29,10 +29,20 @@ function ItemCard(props) {
           <h5 className="card-title fw-bold">{props.title}</h5>
           <h6 className="card-title mb-2">{props.price} ₺</h6>
           <button
+            type="button"
+            onClick={(event) => props.handleEditClick(event, props.item)}
+            handleEditShow={props.handleEditShow}
+            className="btn btn-sm text-white mx-2"
+            style={{ backgroundColor: "#477DCA" }}
+          >
+            Düzenle
+          </button>
+          <button
             onClick={() => {
               addItem(props.item);
               changeText();
             }}
+            type="button"
             className="btn btn-sm text-white"
             style={{ backgroundColor: "#477DCA" }}
           >

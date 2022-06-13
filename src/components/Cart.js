@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Alert, Button, Modal } from "react-bootstrap";
+import { Button, Modal } from "react-bootstrap";
 import { CartProvider, useCart } from "react-use-cart";
 import Invoice from "./Invoice";
 
@@ -22,10 +22,24 @@ function Cart() {
 
   if (isEmpty) {
     return (
-      <div className="p-3 mt-2" style={{ float: "right" }}>
-        <Alert variant="danger" style={{ width: "80vh" }}>
-          Sepet Boş
-        </Alert>
+      <div className="mt-5">
+        <div className="card">
+          <div className="card-body cart">
+            <div className="text-center">
+              <img
+                src={require("../assets/emptyCart.png")}
+                width="150"
+                height="150"
+                className="img-fluid mb-1"
+                alt="empty cart"
+                style={{paddingRight: "15px"}}
+              />
+              <h3>
+                <strong>Sepet Boş</strong>
+              </h3>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
